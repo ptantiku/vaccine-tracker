@@ -16,8 +16,8 @@ async function main() {
   const population = new BigNumber(process.env.POPULATION);
   const dose1 = new BigNumber(process.env.DOSE1);
   const dose2 = new BigNumber(process.env.DOSE2);
-  console.log('1st Doses   = ', dose1.toFormat(0))
-  console.log('2nd Doses   = ', dose2.toFormat(0))
+  console.log('1st Doses   = ', dose1.toFormat(0));
+  console.log('2nd Doses   = ', dose2.toFormat(0));
   console.log('Total doses = ', dose1.plus(dose2).toFormat(0))
 
   const dose1Percent = dose1.div(population).times(100);
