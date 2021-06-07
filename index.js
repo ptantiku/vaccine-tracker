@@ -30,6 +30,11 @@ async function main() {
   dose1Arr.fill(BLOCK, 0, dose1Tick);
   dose2Arr.fill(BLOCK, 0, dose2Tick);
 
+  const targetPercent = dose1.plus(dose2).div(new BigNumber('100e6')).times(100);
+  const targetTick = Math.ceil(targetPercent.div(100).times(MAX_BLOCKS).toNumber());
+  targetArr = new Array(MAX_BLOCKS).fill(BLANK);
+  targetArr.fill(BLOCK, 0, targetTick);
+
   const output = `
     Thailand Vaccine Tracker
 
@@ -38,6 +43,10 @@ async function main() {
 
     วัคซีนเข็มที่ 2:       ${dose2.toFormat(0)}
     ${dose1Arr.join('')} ${dose2Percent.toFormat(2)} %
+
+    เป้าหมาย 100 ล้านโดส:
+    ${targetArr.join('')} ${targetPercent.toFormat(2)} %
+
     `.replace(/\n[ \t]+/g, '\n'); // dedent
   console.log(output);
 }
