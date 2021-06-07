@@ -1,5 +1,5 @@
 const BigNumber = require('bignumber.js');
-require('dotenv').config();
+const data = require('./data.json');
 
 const BLOCK = '▓';
 const BLANK = '░';
@@ -13,9 +13,10 @@ async function main() {
    * from: https://stat.bora.dopa.go.th/new_stat/webPage/statByAgeMonth.php
    * Date: Month=April 2021 (visit 28 May 2021)
    */
-  const population = new BigNumber(process.env.POPULATION);
-  const dose1 = new BigNumber(process.env.DOSE1);
-  const dose2 = new BigNumber(process.env.DOSE2);
+  const population = new BigNumber(data.population);
+  const latestDate = Object.keys(data.doses).sort().pop();
+  const dose1 = new BigNumber(data.doses[latestDate][0]);
+  const dose2 = new BigNumber(data.doses[latestDate][1]);
   console.log('1st Doses   = ', dose1.toFormat(0));
   console.log('2nd Doses   = ', dose2.toFormat(0));
   console.log('Total doses = ', dose1.plus(dose2).toFormat(0))
