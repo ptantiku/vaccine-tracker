@@ -39,13 +39,13 @@ async function main() {
   const output = `
     Thailand Vaccine Tracker
 
-    วัคซีนเข็มที่ 1:       ${dose1.toFormat(0)}
+    วัคซีนเข็มที่ 1:            ${dose1.toFormat(0)}
     ${dose1Arr.join('')} ${dose1Percent.toFormat(2)} %
 
-    วัคซีนเข็มที่ 2:       ${dose2.toFormat(0)}
+    วัคซีนเข็มที่ 2:            ${dose2.toFormat(0)}
     ${dose1Arr.join('')} ${dose2Percent.toFormat(2)} %
 
-    เป้าหมาย 100 ล้านโดส:
+    เป้าหมาย 100 ล้านโดส:    ${dose1.plus(dose2).toFormat(0)}
     ${targetArr.join('')} ${targetPercent.toFormat(2)} %
 
     `.replace(/\n[ \t]+/g, '\n'); // dedent
